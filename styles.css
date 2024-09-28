@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+section,
+nav,
+footer {
+  padding: 40px 40px 0 40px;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+input::placeholder {
+  text-align: center;
+}
+
+.invisible {
+  content-visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* global styles end */
+
+.card {
+@apply
+  shadow-sm
+  flex
+  flex-col
+  relative
+  w-[25%] 
+  max-w-[400px]
+  min-w-[280px]
+   border
+   border-gray-100
+   rounded-lg
+    py-10 
+    px-14
+   bg-white
+}
+
+.favorite-char-single {
+  @apply 
+  relative 
+  shadow-sm 
+  flex gap-7
+  items-center
+  p-8 
+  w-[20%] 
+  min-w-[240px] 
+  max-w-[400px] 
+  rounded-lg 
+  border
+ border-gray-100
+  bg-white
+}
+
+
+.card-container > .card, .favorite-char-single {
+  animation: card-popout 0.8s ease-in-out;
+}
+
+#search-page, #favorites-page, .email-banner {
+  transition: 0.4s ease-in-out;
+}
+
+@keyframes card-popout {
+  0% {
+    opacity: 0;
+    bottom: 80px;
+  }
+
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+@keyframes shift-opacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.overlay {
+  animation: shift-opacity 0.4s ease-in-out;
+}
+
+
+/* media query */
+
+@media screen and (max-width:768px) {
+
+  section,
+  nav,
+  footer {
+    padding: 20px 20px 0 20px;
+  }
+}

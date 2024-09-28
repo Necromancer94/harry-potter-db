@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter Project</title>
+    <link rel="stylesheet" href="src/spinner.css">
+    <link rel="stylesheet" href="src/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon"
+        href="https://icons.iconarchive.com/icons/artua/harry-potter/256/home-icon.png">
+</head>
+
+<body class="antialiased max-w-full leading-normal bg-gray-50">
+    
+    <nav>
+        <ul class="justify-center flex gap-10 list-none mb-6">
+            <li id="search-link"
+                class="cursor-pointer shrink-0 rounded-lg p-2 text-sm font-medium hover:text-gray-700 !bg-sky-100 !text-sky-600">
+                Search</li>
+            <li id="favorites-link"
+                class="cursor-pointer shrink-0 rounded-lg p-2 text-sm font-medium text-gray-500 hover:text-gray-700">
+                Favorites</li>
+        </ul>
+        <hr class="mb-6 w-full border border-gray-100">
+    </nav>
+
+    <section id="search-page" class="flex flex-col">
+        <div class="hero-section mb-10 flex flex-col items-center justify-center">
+            <div class="hero-text text-center max-w-[800px] mb-10 items-center justify-center flex flex-col">
+                <h1 class="mb-6 text-6xl font-bold text-gray-900 mobile:text-4xl">Harry Potter Database</h1>
+                <p class="text-gray-500">
+                    This is but a small passion project that allows you to search for characters
+                    from the Harry Potter universe and add them to your favorites list
+                </p>
+            </div>
+
+            <!-- filter 1 -> search by name -->
+
+            <div
+                class="search-box flex gap-5 justify-center items-stretch mb-10 w-full mobile:flex-col mobile:items-center">
+                <form id="search"
+                    class="border border-gray-100 rounded-lg min-h-10 min-w-[280px] max-w-[800px] w-[60%] shadow-sm mobile:w-full">
+                    <input
+                        class="search-field w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm min-h-[inherit] focus:outline-blue-300 bg-white"
+                        type="text" placeholder="Search for a character">
+                </form>
+                <button id="randomize-btn"
+                    class="btn inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white hover:opacity-80 w-28 shadow-sm mobile:w-full">
+                    Randomize </button>
+                <button id="reset-btn"
+                    class="btn inline-block rounded-lg bg-gray-300 px-5 py-3 text-sm font-medium text-black hover:opacity-80 w-28 shadow-sm mobile:w-full">
+                    Reset </button>
+            </div>
+
+            <!-- filter 2 -> filter by gender -->
+
+            <div class="top-bar m-0">
+
+                <div class="controls flex items-center gap-8 justify-between mb-10 flex-wrap mobile:justify-center">
+
+                    <fieldset
+                        class="radio-group flex-wrap gap-5 flex bg-gray-50 border border-gray-300 py-2 px-3 items-center justify-center rounded-md shadow-sm">
+
+                        <div class="">
+                            <input class="radio-btn cursor-pointer" type="radio" id="all" name="gender">
+                            <label for="all" class=" text-gray-900 hover:border-gray-200"> All</label>
+                        </div>
+
+                        <div class="">
+                            <input class="radio-btn cursor-pointer" type="radio" id="male" name="gender">
+                            <label class=" text-gray-900 hover:border-gray-200" for="male"> Male</label>
+                        </div>
+
+                        <div class="">
+                            <input class="radio-btn cursor-pointer" type="radio" id="female" name="gender">
+                            <label class=" text-gray-900 hover:border-gray-200" for="female"> Female</label>
+                        </div>
+
+                    </fieldset>
+
+                    <!-- filter 3 -> filter by alive -->
+
+                    <div
+                        class="checkbox-group flex gap-5 bg-gray-50 border border-gray-300 py-2 px-3 items-center justify-center rounded-md shadow-sm">
+                        <input class="nonhuman-checkbox size-4 rounded border-gray-300 cursor-pointer" type="checkbox"
+                            id="nonhuman">
+                        <label for="nonhuman" class="text-gray-900 hover:border-gray-200"> Non-human</label>
+                    </div>
+
+                    <!-- filter 4 -> filter by dead characters -->
+
+                    <div
+                        class="checkbox-group flex gap-5 bg-gray-50 border border-gray-300 py-2 px-3 items-center justify-center rounded-md shadow-sm">
+                        <input class="dead-checkbox size-4 rounded border-gray-300 cursor-pointer" type="checkbox"
+                            id="dead">
+                        <label for="nonhuman" class="text-gray-900 hover:border-gray-200"> Dead</label>
+                    </div>
+
+                    <!-- filter 5 -> filter by school -->
+                    <div
+                        class="dropdown-group flex gap-5 bg-gray-50 border border-gray-300 py-2 px-3 items-center justify-center rounded-md shadow-sm">
+                        <label for="house" class=" text-gray-900"> House</label>
+                        <select class="house-dropdown w-full rounded-sm border-gray-300 text-gray-700 sm:text-sm border"
+                            id="house">
+                            <option value="All"> All</option>
+                            <option value="Gryffindor"> Gryffindor</option>
+                            <option value="Hufflepuff"> Hufflepuff</option>
+                            <option value="Ravenclaw"> Ravenclaw</option>
+                            <option value="Slytherin"> Slytherin</option>
+                            <option value="Neither"> Neither</option>
+                        </select>
+                    </div>
+
+
+
+                    <!-- filter 6 -> sort by name -->
+                    <div
+                        class="dropdown-group flex gap-5 bg-gray-50 border border-gray-300 py-2 px-3 items-center justify-center rounded-md shadow-sm">
+                        <label for="sort-method" class=" text-gray-900 whitespace-nowrap"> Sort by name</label>
+                        <select id="sort-method"
+                            class="sort-dropdown w-full rounded-md border-gray-300 text-gray-700 sm:text-sm border">
+                            <option value="A to Z"> A to Z</option>
+                            <option value="Z to A"> Z to A</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <p class="form-none text-center font-medium text-red-500 invisible"> No characters found</p>
+
+
+        <div class="card-container mb-10 flex flex-wrap items-stretch justify-center relative w-full gap-14">
+            <!-- character cards go here -->
+        </div>
+
+
+        <button
+            class="load-more-btn btn inline-block rounded-lg bg-red-500 px-5 py-3 font-medium text-white hover:opacity-80 w-[280px] m-auto shadow-sm mobile:w-full">
+            Load more
+        </button>
+    </section>
+
+    <section id="favorites-page" class="invisible flex flex-col items-center justify-center w-full gap-12">
+
+        <div class="w-full">
+            <p id="total-favorites"
+                class="rounded-lg border border-gray-300 w-fit m-auto mb-10 cursor-pointer  bg-gray-100 p-2 text-sm font-medium text-gray-600">
+                Total:
+            </p>
+            <h2 class="text-center text-black font-bold text-3xl"> Your list of favorite characters</h2>
+        </div>
+
+        <div class="favorite-char-list flex flex-wrap items-stretch justify-center gap-10 w-full">
+            <!-- favorite characters go here -->
+        </div>
+        <hr class="mb-6 w-full border border-gray-100">
+
+        <div class="w-full text-center">
+            <h2 class="mb-3 text-3xl font-bold text-black"> Some data about your characters</h2>
+            <p class="text-gray-500"> The charts below show some interesting data about your favorite characters,
+                such as their house, gender, and species.</p>
+        </div>
+
+        <!-- charts.js -->
+        <div class="charts-group flex w-full max-w-[1260px] gap-14 justify-center items-center flex-col">
+
+            <div class="chart-wrapper w-full h-[400px] bg-white p-10 shadow-sm border border-gray-100 mobile:p-5 flex justify-center items-center">
+                <canvas id="houseChart"></canvas>
+            </div>
+
+            <div class="charts-col flex gap-14 w-full mobile:flex-col mobile:gap-14">
+
+                <div class="chart-wrapper w-full h-[400px] bg-white p-10 shadow-sm border border-gray-100 mobile:p-5 flex justify-center items-center">
+                    <canvas id="genderChart"></canvas>
+                </div>
+
+                <div class="chart-wrapper w-full h-[400px] bg-white p-10 shadow-sm border border-gray-100 mobile:p-5 flex justify-center items-center">
+                    <canvas id="speciesChart"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="email-banner invisible border border-blue-100 p-4 shadow-lg sm:p-6 lg:p-8 flex gap-8 items-center justify-center bg-slate-200 text-black z-50 fixed bottom-0 py-4 mobile:flex-col w-full"
+        role="alert">
+        <img class="close-icon w-6 absolute top-5 right-5 cursor-pointer" src="assets/close-icon.svg">
+
+        <p class=" text-gray-500 font-medium">
+            Check out some data about your favorite characters
+        </p>
+
+        <a id="email-banner-link"
+            class="inline-block w-full rounded-lg bg-blue-500 px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto"
+            href="#"> Go to favorites </a>
+    </div>
+
+    <footer class="bg-gray-100 py-10 mt-10 text-center mx-auto">
+                <a class="flex justify-center items-center gap-8 mb-10" href="https://github.com/Necromancer94" target="_blank">
+                    <p class="text-sm text-gray-500 underline transition hover:text-gray-700/75">
+                        Check out my projects on Github
+                    </p>
+                    <img class="w-6 cursor-pointer" src="assets/github-mark.svg">
+                </a>
+
+            <div>
+                <p class="text-xs text-gray-700">
+                    Created with
+                    <a href="https://docs.potterdb.com/"
+                        class="underline transition hover:text-gray-700/75">Potter DB</a> ,
+                    <a href="https://tailwindcss.com/"
+                        class="underline transition hover:text-gray-700/75">Tailwind CSS</a> ,
+                    <a href="https://www.hyperui.dev/"
+                        class="underline transition hover:text-gray-700/75">Hyper UI</a> and
+                    <a href="https://www.chartjs.org/"
+                        class="underline transition hover:text-gray-700/75">Chart JS</a>.
+                </p>
+            </div>
+    </footer>
+
+    <!-- spinner -->
+    <div class="lds-spinner invisible">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="main.js"></script>
+
+</body>
+</html>
