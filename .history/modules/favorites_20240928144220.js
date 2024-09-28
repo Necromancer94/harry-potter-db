@@ -1,6 +1,6 @@
 // functions to save/ remove favorites from local storage
 
-import { domElements } from "./domElements.js"
+import { domElements } from "/modules/domElements.js"
 import { genderChart, houseChart, speciesChart, countChars, genderData, houseData, speciesData, updateChart } from "./charts.js"
 import { createFavoriteCard } from "./createFavoriteCard.js"
 
