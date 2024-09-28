@@ -26,6 +26,13 @@ function createChart (elementID, chartType, labelsArray, dataArray){
             scales: {
                 y: {
                     beginAtZero: true
+                    
+                }
+  
+            },
+            scale: {
+                ticks : { 
+                    precision: 0
                 }
             }
         }

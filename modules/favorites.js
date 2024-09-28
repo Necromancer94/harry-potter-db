@@ -90,7 +90,7 @@ function checkFavoriteState() {
             }) // get the cards of matching characters
 
         filteredCards.forEach((card) => {
-            card.querySelector('.favorite-icon').setAttribute('src', 'assets/close-icon.svg')
+            card.querySelector('.favorite-icon').setAttribute('src', 'assets/star-red.svg')
         }) //replace icons of matching characters
     }
 }
@@ -149,8 +149,8 @@ function composeFavoriteChar(icon) {
 
 function handleIconClick(icon) {
 
-    if (!icon.getAttribute('src').includes('close')) {
-        icon.setAttribute('src', 'assets/close-icon.svg')
+    if (!icon.getAttribute('src').includes('red')) {
+        icon.setAttribute('src', 'assets/star-red.svg')
         const favoriteChar = composeFavoriteChar(icon)
         setLocalItem(favoriteChar)
     }

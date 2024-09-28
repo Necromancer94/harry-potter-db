@@ -7,7 +7,7 @@ export default function showBanner() {
         return
     }
 
-    if (localStorage.getItem('favoriteCharacters')){
+    if (localStorage.getItem('favoriteCharacters') && domElements.favoritesPage.classList.contains('invisible')){
         setTimeout(() => {
             showElement(domElements.emailBanner)
             localStorage.setItem('BannerShown', 'true')

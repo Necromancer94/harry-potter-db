@@ -1,13 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './index.html', 
-    './stylesheets/styles.css',
-     './stylesheets/favorites.css',
-      './modules/createCard.js',
-       './modules/favorites.js',
-        './main.js',
-      './modules/showBloodStatus.js'
+    './**/*.html',  
+    './**/*.css',   
+    './**/*.js',    
     ],
   theme: {
     extend: {

@@ -1,14 +1,10 @@
 import { domElements } from "./modules/domElements.js";
-import {
-    favoritesList, removeLocalItem, setLocalItem,
-    countFavorites, renderFavorites, checkFavoriteState,
-    composeFavoriteChar, handleIconClick, loadIconEvents } from "./modules/favorites.js";
-
+import { countFavorites, renderFavorites, checkFavoriteState, loadIconEvents } from "./modules/favorites.js";
 import queries from "./modules/queryParams.js"
-import showBanner from "./modules/emailBanner.js";
+import showBanner from "./modules/favoritesBanner.js";
 import showBloodStatus from "./modules/showBloodStatus.js";
 import createCard from "./modules/createCard.js";
-import { createPopup, body } from "./modules/overlayElements.js";
+import { createPopup } from "./modules/overlayElements.js";
 
 // I. Global definitions
 
@@ -41,6 +37,7 @@ function resetPageNumber() {
 
 function deleteCards() {
     domElements.cardContainer.innerHTML=''
+    hideElement(domElements.loadMoreBtn) //
 }
 
 export function showElement(element) {
@@ -142,6 +139,7 @@ async function renderCards(charactersArray) {
     }
 
     showElement(domElements.topBar)
+    showElement(domElements.loadMoreBtn) //
     showBloodStatus()
     await loadIconEvents() //wait for contextual event listeners
     checkFavoriteState()
