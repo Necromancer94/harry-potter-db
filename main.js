@@ -30,6 +30,10 @@ export function appendQueryParams(queryParam, paramValue) {
 
 // II. Utility functions
 
+export function setImageSource(element, fileName){
+    element.setAttribute('src', 'assets/' + fileName)
+}
+
 function resetPageNumber() {
     pageNumber = 1;
     appendQueryParams(queries.pageQuery, pageNumber)
@@ -109,6 +113,10 @@ export async function loadData (url = currentURL) {
         if(result.data.length === 0){
             showElement(domElements.formNone)
             hideElement(domElements.topBar)
+        }
+
+        else if (url.includes('name_eq')){
+            return result.data
         }
 
         else if (result.meta.pagination.records < 100 || result.data.length < 100) {

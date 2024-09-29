@@ -3,6 +3,7 @@
 import { domElements } from "./domElements.js"
 import { genderChart, houseChart, speciesChart, countChars, genderData, houseData, speciesData, updateChart } from "./charts.js"
 import { createFavoriteCard } from "./createFavoriteCard.js"
+import { setImageSource } from "../main.js";
 
 let favoriteIconListener = false; //checks if the event listener has been fired
 
@@ -90,7 +91,7 @@ function checkFavoriteState() {
             }) // get the cards of matching characters
 
         filteredCards.forEach((card) => {
-            card.querySelector('.favorite-icon').setAttribute('src', 'assets/star-red.svg')
+            setImageSource(card.querySelector('.favorite-icon'), 'star-red.svg' )
         }) //replace icons of matching characters
     }
 }
@@ -102,7 +103,7 @@ function changeIcon(name) { //possible to reuse
         })
 
     if (changedCard.length > 0) {
-        changedCard[0].querySelector('.favorite-icon').setAttribute('src', 'assets/star-white.svg')
+        setImageSource( changedCard[0].querySelector('.favorite-icon'), 'star-white.svg')
     }
 
 }
@@ -150,13 +151,13 @@ function composeFavoriteChar(icon) {
 function handleIconClick(icon) {
 
     if (!icon.getAttribute('src').includes('red')) {
-        icon.setAttribute('src', 'assets/star-red.svg')
+        setImageSource(icon,'star-red.svg')
         const favoriteChar = composeFavoriteChar(icon)
         setLocalItem(favoriteChar)
     }
 
     else {
-        icon.setAttribute('src', 'assets/star-white.svg')
+        setImageSource(icon,'star-white.svg')
         const charNameToDelete = icon.parentNode.querySelector('.name').textContent.trim()
         removeLocalItem(charNameToDelete)
     }
