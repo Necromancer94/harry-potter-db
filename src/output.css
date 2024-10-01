@@ -808,6 +808,10 @@ video {
   flex-shrink: 0;
 }
 
+.flex-grow {
+  flex-grow: 1;
+}
+
 .border-collapse {
   border-collapse: collapse;
 }
@@ -1268,6 +1272,18 @@ input::placeholder {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
+
+@media (min-width: 640px) {
+  .controls {
+    justify-content: center;
+  }
+}
+
 .favorite-char-single {
   position: relative;
   display: flex;
@@ -1357,6 +1373,10 @@ input::placeholder {
 @media (min-width: 640px) {
   .sm\:w-auto {
     width: auto;
+  }
+
+  .sm\:justify-center {
+    justify-content: center;
   }
 
   .sm\:p-6 {

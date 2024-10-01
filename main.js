@@ -116,11 +116,13 @@ export async function loadData (url = currentURL) {
         }
 
         else if (url.includes('name_eq')){
+            hideElement(domElements.spinner)
             return result.data
         }
 
         else if (result.meta.pagination.records < 100 || result.data.length < 100) {
             hideElement(domElements.loadMoreBtn)
+            console.log('less')
         }
 
         else {
@@ -147,7 +149,6 @@ async function renderCards(charactersArray) {
     }
 
     showElement(domElements.topBar)
-    showElement(domElements.loadMoreBtn) //
     showBloodStatus()
     await loadIconEvents() //wait for contextual event listeners
     checkFavoriteState()

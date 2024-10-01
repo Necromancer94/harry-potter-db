@@ -53,6 +53,12 @@ input::placeholder {
     py-10 
     px-14
    bg-white
+   mobile:w-full
+}
+
+.controls {
+  @apply
+  sm:justify-center
 }
 
 .favorite-char-single {
