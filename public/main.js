@@ -30,7 +30,7 @@ export function appendQueryParams(queryParam, paramValue) {
 
 // II. Utility functions
 
-export function setImageSource(element, fileName){
+export function setImageSource(element, fileName) {
     element.setAttribute('src', 'assets/' + fileName)
 }
 
@@ -40,7 +40,7 @@ function resetPageNumber() {
 }
 
 function deleteCards() {
-    domElements.cardContainer.innerHTML=''
+    domElements.cardContainer.innerHTML = ''
     hideElement(domElements.loadMoreBtn) //
 }
 
@@ -52,17 +52,17 @@ export function hideElement(element) {
     element.classList.add('invisible')
 }
 
-function disableRadioBtn (selector){
-    domElements[selector].disabled=true;
+function disableRadioBtn(selector) {
+    domElements[selector].disabled = true;
 }
 
-function uncheckElement(...selectors){
+function uncheckElement(...selectors) {
     selectors.forEach((selector) => {
         domElements[selector].checked = false
     })
 }
 
-function randomLink (){
+function randomLink() {
     const url = 'https://api.potterdb.com/v1/characters?page[size]=50&page[number]='
     const minPage = 1
     const maxPage = 97
@@ -76,17 +76,17 @@ async function renderInitialCards() {
     renderCards(allCharacters)
 }
 
-function showFavoritePage(){ //could store page in a variable
+function showFavoritePage() { //could store page in a variable
     hideElement(domElements.searchPage)
     showElement(domElements.favoritesPage)
-    renderFavorites() 
+    renderFavorites()
     countFavorites()
     domElements.favoritesLink.classList.add('!bg-sky-100', '!text-sky-600')
     domElements.searchLink.classList.remove('!bg-sky-100', '!text-sky-600')
 }
 
 
-function showSearchPage (){
+function showSearchPage() {
     showElement(domElements.searchPage)
     hideElement(domElements.favoritesPage)
     domElements.searchLink.classList.add('!bg-sky-100', '!text-sky-600')
@@ -95,13 +95,13 @@ function showSearchPage (){
 
 // III. Fetching data
 
-function resetURL(){
-    for (let query in queries){
+function resetURL() {
+    for (let query in queries) {
         appendQueryParams(queries[query], '')
     }
 }
 
-export async function loadData (url = currentURL) {
+export async function loadData(url = currentURL) {
 
     try {
         showElement(domElements.spinner)
@@ -110,12 +110,12 @@ export async function loadData (url = currentURL) {
         const response = await fetch(url)
         const result = await response.json()
 
-        if(result.data.length === 0){
+        if (result.data.length === 0) {
             showElement(domElements.formNone)
             hideElement(domElements.topBar)
         }
 
-        else if (url.includes('name_eq')){
+        else if (url.includes('name_eq')) {
             hideElement(domElements.spinner)
             return result.data
         }
@@ -189,7 +189,7 @@ async function genderFilter() {
     deleteCards()
 
     domElements.radioButtons.forEach((button) => {
-        button.disabled=false;
+        button.disabled = false;
     })
 
     let gender = ''
@@ -258,7 +258,7 @@ async function houseFilter() {
     }
 }
 
-async function deadFilter(){
+async function deadFilter() {
 
     resetPageNumber()
     deleteCards()
@@ -275,7 +275,7 @@ async function deadFilter(){
     }
 }
 
-async function sortName (){
+async function sortName() {
 
     resetPageNumber()
     deleteCards()
@@ -294,16 +294,16 @@ async function sortName (){
 
 // V. Event listeners
 
-function loadEventListeners(){
+function loadEventListeners() {
 
     domElements.loadMoreBtn.addEventListener('click', loadMore);
     domElements.houseDropdown.addEventListener('change', houseFilter)
     domElements.nonHumanCheckBox.addEventListener('click', nonHumanFilter)
-    
+
     domElements.searchInput.addEventListener('input', (event) => {
         search(event.target.value.toLowerCase().trim())
     })
-    
+
     domElements.radioButtons.forEach((button) => {
         button.addEventListener('click', genderFilter)
     })
@@ -317,10 +317,10 @@ function loadEventListeners(){
 
     domElements.deadCheckbox.addEventListener('click', deadFilter)
 
-    domElements.sortDropdown.addEventListener('change' , sortName)
+    domElements.sortDropdown.addEventListener('change', sortName)
 
     // pages
-    
+
     domElements.searchLink.addEventListener('click', showSearchPage)
 
     domElements.favoritesLink.addEventListener('click', showFavoritePage)
@@ -333,21 +333,21 @@ function loadEventListeners(){
 
 // VI. Randomize, reset, load more functions
 
-async function getRandom (){
+async function getRandom() {
     resetInterface()
     const randomURL = randomLink()
-    const randomCharacters = await loadData (randomURL)
+    const randomCharacters = await loadData(randomURL)
     renderCards(randomCharacters)
 }
 
-function resetInterface (){
+function resetInterface() {
     deleteCards()
     resetPageNumber()
     resetURL()
     disableRadioBtn('allRadio')
-    uncheckElement('femaleRadio', 'maleRadio','nonHumanCheckBox', 'deadCheckbox')
+    uncheckElement('femaleRadio', 'maleRadio', 'nonHumanCheckBox', 'deadCheckbox')
     domElements.houseDropdown.value = 'All'
-    domElements.searchInput.value=''
+    domElements.searchInput.value = ''
     domElements.sortDropdown.value = 'A to Z'
 }
 
